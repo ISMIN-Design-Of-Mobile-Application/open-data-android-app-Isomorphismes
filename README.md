@@ -1,5 +1,5 @@
 
-## [PokédApp]  
+## PokédApp
   
 Codé par :   
  - Constant Bounoure   
