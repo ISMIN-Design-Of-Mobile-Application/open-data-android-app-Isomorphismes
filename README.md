@@ -1,15 +1,15 @@
 
-## [APP NAME]  
+## [PokédApp]  
   
 Codé par :   
- - [prenom1] [nom1]   
- - [prenom2] [nom2]   
+ - Constant Bounoure   
+ - Tuan-Anh Bach  
 
 ## Description  
+
+URL des données : https://data.opendatasoft.com/explore/dataset/pokedex_clean%40public/table/ 
   
-URL des données : [URL]  
-  
-[A completer]  
+Réalisation d'un pokédex sur Androïd. L'application permettra de parcourir la liste des pokémons du pokédex, d'obtenir des informations sur les pokémons en cliquant dessus, d'aller sur la mapmonde et de chercher les pokémons via leur position. On pourra également tenir un inventaire pour le dresseur, et capturer des pokémons / entretenir leur bien-être.
   
 ## Librairies externes  
   
