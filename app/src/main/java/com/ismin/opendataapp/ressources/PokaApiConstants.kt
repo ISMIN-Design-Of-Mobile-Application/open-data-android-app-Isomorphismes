@@ -1,2 +1,2 @@
-package com.ismin.opendataapp
+package com.ismin.opendataapp.ressources
 
