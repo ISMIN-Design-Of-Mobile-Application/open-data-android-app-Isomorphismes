@@ -1,7 +1,8 @@
-package com.ismin.opendataapp
+package com.ismin.opendataapp.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ismin.opendataapp.R
 
 class MainActivity : AppCompatActivity() {
 
