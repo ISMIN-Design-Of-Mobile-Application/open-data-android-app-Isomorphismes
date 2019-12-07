@@ -30,9 +30,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activities.PokedexWorldMapActivity"
+            android:name=".pokapifragments.PokedexWorldMapFragment"
             android:label="@string/title_activity_pokedex_world_map"></activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.PokApiMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
