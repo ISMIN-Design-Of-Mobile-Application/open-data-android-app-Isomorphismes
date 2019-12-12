@@ -1,7 +1,7 @@
 
-## PokédApp
+## PokApi
   
-Codé par :   
+Application codée par :   
  - Constant Bounoure   
  - Tuan-Anh Bach  
 
@@ -13,7 +13,8 @@ Réalisation d'un pokédex sur Androïd. L'application permettra de parcourir la
   
 ## Librairies externes  
   
-[A completer]  
+- Room
+- Retrofrit 2
   
 ## Consignes  
   
