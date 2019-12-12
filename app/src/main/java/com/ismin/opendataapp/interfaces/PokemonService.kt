@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface PokemonService {
+public interface PokemonService {
     @GET("api/records/1.0/search/?dataset=pokedex_clean%40public&rows=151")
     fun getAllPokemonsForMaps(): Call<PokApiMainResponse>
 
