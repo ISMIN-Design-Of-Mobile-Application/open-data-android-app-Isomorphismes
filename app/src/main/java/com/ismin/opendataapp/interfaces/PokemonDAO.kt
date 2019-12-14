@@ -20,6 +20,6 @@ interface PokemonDAO {
     @Query("DELETE FROM pokemon")
     fun deleteAllPokemons()
 
-    @Query("SELECT * FROM pokemon WHERE name LIKE :pokemon")
+    @Query("SELECT * FROM pokemon WHERE pokemon LIKE :pokemon")
     fun findPokemonLocalByName(pokemonName: String) : Pokemon
 }
