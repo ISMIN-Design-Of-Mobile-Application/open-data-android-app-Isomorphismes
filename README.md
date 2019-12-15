@@ -1,7 +1,7 @@
 
 ## PokApi
   
-Application codée par :   
+Application codée avec amour par :   
  - Constant Bounoure   
  - Tuan-Anh Bach  
 
