@@ -12,7 +12,6 @@ import com.ismin.opendataapp.jsonparsingclass.PokApiMainResponse
 import com.ismin.opendataapp.pokapiclass.PagerAdapter
 import com.ismin.opendataapp.pokapiclass.Pokedex
 import com.ismin.opendataapp.pokapiclass.Pokemon
-import com.ismin.opendataapp.pokapifragments.PokApiInformationFragment
 import com.ismin.opendataapp.pokapifragments.PokedexWorldMapFragment
 import com.ismin.opendataapp.ressources.PokApiDatabase
 import com.ismin.opendataapp.ressources.SERVER_BASE_URL
@@ -22,7 +21,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.xml.transform.Templates
 
 class PokApiMainActivity : AppCompatActivity() {
     private var pokedex : Pokedex = Pokedex()
