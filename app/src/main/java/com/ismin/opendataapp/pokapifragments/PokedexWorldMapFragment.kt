@@ -1,7 +1,6 @@
 package com.ismin.opendataapp.pokapifragments
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,21 +12,16 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Marker
 import com.ismin.opendataapp.interfaces.PokemonDAO
 import com.ismin.opendataapp.pokapiclass.Pokemon
 import com.ismin.opendataapp.ressources.PokApiDatabase
-import android.widget.Toast
-import com.google.android.gms.maps.model.Marker
-import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.setTag
-import org.antlr.runtime.misc.IntArray
+import com.google.maps.android.clustering.ClusterManager
+import com.ismin.opendataapp.pokapiclass.PokemonItem
 
-
-
-
-
-class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback {
-    private var listener: Context? = null
+class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+    private lateinit var mClusterManager: ClusterManager<PokemonItem>
+    private var listener: OnFragmentInteractionListener? = null
     private lateinit var pokemonDAO: PokemonDAO
     private lateinit var pokemons: List<Pokemon>
     private lateinit var mMap: GoogleMap
@@ -61,32 +55,24 @@ class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        addPokemonsToMap()
+        mMap.setOnInfoWindowClickListener{this.requireContext()}
         mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(47.778970, 7.347283)))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(6.0f))
+        setUpClusterer()
+    }
+
+    private fun setUpClusterer() {
+        mClusterManager = ClusterManager(this.requireContext(), mMap)
+        mMap.setOnCameraIdleListener(mClusterManager)
+        mMap.setOnMarkerClickListener(mClusterManager)
+        addPokemonsToMap()
     }
 
     private fun addPokemonsToMap() {
-        var mPokemon: Marker
         pokemons.forEach {
-            val pokemonPos = LatLng(it.lat, it.long)
-            mPokemon = mMap.addMarker(
-                MarkerOptions()
-                    .position(pokemonPos)
-                    .title(it.pokemon)
-            )
-            mPokemon.tag = it
+            val pokemonItem = PokemonItem(it.lat, it.long, it.pokemon, it.lieu)
+            mClusterManager.addItem(pokemonItem)
         }
-    }
-
-    fun onMarkerClick(marker:Marker):Boolean {
-        var pokemon = marker.tag as Pokemon?
-        if (pokemon != null) {
-            Toast.makeText(this.requireContext(), pokemon.pokemon + " living in " + pokemon.lieu, Toast.LENGTH_SHORT).show()
-        }
-        // Return false to indicate that we have not consumed the event and that we wish
-        // for the default behavior to occur (which is for the camera to move such that the
-        // marker is centered and for the marker's info window to open, if it has one).
-        return false
     }
 
     override fun onAttach(context: Context) {
@@ -103,8 +89,11 @@ class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback {
         listener = null
     }
 
-    interface OnFragmentInteractionListener {
-        fun onFragmentInteraction(uri: Uri)
+    override fun onInfoWindowClick(marker: Marker) {
+        listener?.onItemClicked(pokemons[marker.snippet.toInt()])
     }
 
+    interface OnFragmentInteractionListener {
+        fun onItemClicked(pokemonItem: Pokemon)
+    }
 }
