@@ -19,7 +19,8 @@ import com.ismin.opendataapp.ressources.PokApiDatabase
 import com.google.maps.android.clustering.ClusterManager
 import com.ismin.opendataapp.pokapiclass.PokemonItem
 
-class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
+class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback,
+    GoogleMap.OnInfoWindowClickListener {
     private lateinit var mClusterManager: ClusterManager<PokemonItem>
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var pokemonDAO: PokemonDAO
@@ -31,7 +32,11 @@ class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfo
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(com.ismin.opendataapp.R.layout.fragment_pokedex_world_map, container, false)
+        val rootView = inflater.inflate(
+            com.ismin.opendataapp.R.layout.fragment_pokedex_world_map,
+            container,
+            false
+        )
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = childFragmentManager
@@ -55,7 +60,7 @@ class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfo
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.setOnInfoWindowClickListener{this.requireContext()}
+        mMap.setOnInfoWindowClickListener { this.requireContext() }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(47.778970, 7.347283)))
         mMap.animateCamera(CameraUpdateFactory.zoomTo(6.0f))
         setUpClusterer()

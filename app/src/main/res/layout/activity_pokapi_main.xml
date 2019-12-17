@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/PokApi_Main_Display"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/PokApi_Main_Display"
     tools:context=".activities.PokApiMainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,12 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:tabSelectedTextColor="@color/colorAccent"
-            app:tabMode="fixed">
-        </com.google.android.material.tabs.TabLayout>
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorAccent"></com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -30,8 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

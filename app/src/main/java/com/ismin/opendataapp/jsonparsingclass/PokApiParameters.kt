@@ -3,7 +3,7 @@ package com.ismin.opendataapp.jsonparsingclass
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class PokApiParameters (
+class PokApiParameters(
     @SerializedName("dataset")
     var dataset: List<String>,
 
@@ -15,4 +15,4 @@ class PokApiParameters (
 
     @SerializedName("format")
     var format: String
-    ) : Serializable
+) : Serializable

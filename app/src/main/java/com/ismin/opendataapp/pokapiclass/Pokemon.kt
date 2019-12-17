@@ -10,8 +10,8 @@ data class Pokemon(
     val image: Int = 0,
     @PrimaryKey(autoGenerate = false)
     var pokemon: String = "",
+    var lieu: String = "",
     var geolocalisation: String = "",
     var long: Double = 0.0,
-    var lat: Double = 0.0,
-    var lieu: String = ""
+    var lat: Double = 0.0
 ) : Serializable

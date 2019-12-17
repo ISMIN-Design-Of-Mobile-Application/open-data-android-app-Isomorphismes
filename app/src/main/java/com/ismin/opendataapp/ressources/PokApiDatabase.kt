@@ -19,9 +19,11 @@ abstract class PokApiDatabase : RoomDatabase() {
             if (INSTANCE == null) {
                 synchronized(PokApiDatabase::class) {
                     INSTANCE = Room
-                        .databaseBuilder(context.applicationContext,
+                        .databaseBuilder(
+                            context.applicationContext,
                             PokApiDatabase::class.java,
-                            "pokemonsDB")
+                            "pokemonsDB"
+                        )
                         .allowMainThreadQueries()
                         .fallbackToDestructiveMigration()
                         .build()

@@ -10,7 +10,8 @@ import com.ismin.opendataapp.pokapifragments.PokedexWorldMapFragment
 class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     private var pokedexWorldMapFragment: PokedexWorldMapFragment = PokedexWorldMapFragment()
     private var pokApiInformationFragment: PokApiInformationFragment = PokApiInformationFragment()
-    private var pokedexListOfPokemonsFragment: PokedexListOfPokemonsFragment = PokedexListOfPokemonsFragment()
+    private var pokedexListOfPokemonsFragment: PokedexListOfPokemonsFragment =
+        PokedexListOfPokemonsFragment()
 
     private var pokapiFragmentsTitle = ArrayList<String>()
     private var pokapiFragments = ArrayList<Fragment>()

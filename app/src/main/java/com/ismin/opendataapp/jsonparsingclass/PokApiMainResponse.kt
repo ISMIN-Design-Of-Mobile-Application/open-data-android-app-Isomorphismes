@@ -3,7 +3,7 @@ package com.ismin.opendataapp.jsonparsingclass
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class PokApiMainResponse (
+data class PokApiMainResponse(
     @SerializedName("nhits")
     var nhits: Int,
 
@@ -12,4 +12,4 @@ data class PokApiMainResponse (
 
     @SerializedName("records")
     var records: List<PokApiRecord>
-    ): Serializable
+) : Serializable
