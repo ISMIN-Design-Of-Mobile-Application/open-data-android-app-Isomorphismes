@@ -83,8 +83,8 @@
 
     <TextView
         android:id="@+id/external_librairies_text"
-        android:layout_width="154dp"
-        android:layout_height="154dp"
+        android:layout_width="164dp"
+        android:layout_height="112dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/roboto_mono"
@@ -98,7 +98,6 @@
         android:id="@+id/data_url_text"
         android:layout_width="340dp"
         android:layout_height="42dp"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:text="https://data.opendatasoft.com/explore/dataset/pokedex_clean%40public/"
@@ -106,8 +105,6 @@
         android:textSize="14sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/data_url" />
 
     <ImageView
@@ -115,10 +112,10 @@
         android:layout_width="168dp"
         android:layout_height="176dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="156dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/ronflex"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_text" />
 
     <ImageView
         android:id="@+id/pikachu"
@@ -126,7 +123,7 @@
         android:layout_height="176dp"
         android:layout_marginTop="92dp"
         android:layout_marginEnd="36dp"
-        android:src="@drawable/Pikachu"
+        android:src="@drawable/pikachu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

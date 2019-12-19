@@ -18,7 +18,7 @@ import com.ismin.opendataapp.ressources.PokApiDatabase
 class PokedexListOfPokemonsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var pokemonAdapter: PokemonAdapter
-    private lateinit var pokedex: Pokedex
+    private var pokedex: Pokedex = Pokedex()
     private lateinit var pokemonDAO: PokemonDAO
     private var listener: OnFragmentInteractionListener? = null
 
@@ -26,7 +26,8 @@ class PokedexListOfPokemonsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_pokedex_list_of_pokemons, container, false)
+        val rootView =
+            inflater.inflate(R.layout.fragment_pokedex_list_of_pokemons, container, false)
         recyclerView = rootView.findViewById(R.id.recyclerView)
         pokemonDAO = PokApiDatabase.getAppDatabase(this.requireContext()).getPokemonDao()
         pokedex.setPokemons(pokemonDAO.getAllLocalPokemons() as ArrayList<Pokemon>)

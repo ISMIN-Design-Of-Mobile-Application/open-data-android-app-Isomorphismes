@@ -95,10 +95,10 @@ class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback,
     }
 
     override fun onInfoWindowClick(marker: Marker) {
-        listener?.onItemClicked(pokemons[marker.snippet.toInt()])
+        listener?.onPokemonClicked(pokemons[marker.snippet.toInt()])
     }
 
     interface OnFragmentInteractionListener {
-        fun onItemClicked(pokemonItem: Pokemon)
+        fun onPokemonClicked(pokemonItem: Pokemon)
     }
 }

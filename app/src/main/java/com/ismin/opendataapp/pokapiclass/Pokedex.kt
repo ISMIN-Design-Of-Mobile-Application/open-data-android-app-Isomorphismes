@@ -53,7 +53,7 @@ class Pokedex {
         )
     }
 
-    fun getPokemonFromPokedex(position: Int) : Pokemon {
+    fun getPokemonFromPokedex(position: Int): Pokemon {
         return pokemons[position]
     }
 

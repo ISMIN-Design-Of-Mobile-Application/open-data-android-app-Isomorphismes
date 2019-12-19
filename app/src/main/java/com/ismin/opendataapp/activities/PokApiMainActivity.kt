@@ -1,6 +1,7 @@
 package com.ismin.opendataapp.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -15,7 +16,9 @@ import com.ismin.opendataapp.jsonparsingclass.PokApiMainResponse
 import com.ismin.opendataapp.pokapiclass.PagerAdapter
 import com.ismin.opendataapp.pokapiclass.Pokedex
 import com.ismin.opendataapp.pokapiclass.Pokemon
+import com.ismin.opendataapp.pokapifragments.PokApiInformationFragment
 import com.ismin.opendataapp.pokapifragments.PokedexListOfPokemonsFragment
+import com.ismin.opendataapp.pokapifragments.PokedexWorldMapFragment
 import com.ismin.opendataapp.ressources.PokApiDatabase
 import com.ismin.opendataapp.ressources.SERVER_BASE_URL
 import kotlinx.android.synthetic.main.activity_pokapi_main.*
@@ -25,7 +28,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class PokApiMainActivity : AppCompatActivity() {
+class PokApiMainActivity : AppCompatActivity(),
+    PokedexListOfPokemonsFragment.OnFragmentInteractionListener,
+    PokedexWorldMapFragment.OnFragmentInteractionListener,
+    PokApiInformationFragment.OnFragmentInteractionListener {
     private var pokedex: Pokedex = Pokedex()
 
     private var retrofit = Retrofit.Builder()
@@ -53,11 +59,11 @@ class PokApiMainActivity : AppCompatActivity() {
             }
 
             override fun onTabReselected(p0: TabLayout.Tab?) {
-                TODO("not implemented")
+
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {
-                TODO("not implemented")
+
             }
         })
         getAllPokemonsFromAPI()
@@ -81,14 +87,19 @@ class PokApiMainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
+     */
     override fun onPokemonClicked(pokemon: Pokemon) {
         //Fonction pour lancer l'activity d'information
-    }*/
+    }
+
+    override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented")
+    }
 
     private fun getAllPokemonsFromAPI(): Boolean {
         var success = false
         var pokemon: Pokemon
+        pokemonDAO.deleteAllPokemons()
         pokemonService.getAllPokemonsForMaps()
             .enqueue(object : Callback<PokApiMainResponse> {
                 override fun onResponse(
@@ -99,9 +110,12 @@ class PokApiMainActivity : AppCompatActivity() {
                     if (allPokemon != null) {
                         val pokapirecords = allPokemon?.records
                         pokapirecords!!.forEach {
-                            pokemon = createPokemonFromField(it.pokApiFields)
-                            pokemonDAO.insertPokemon(pokemon)
-                            pokedex.addPokemonToPokedex(pokemon)
+                            println(it.pokApiFields)
+                            if(noNullDataInPokemon(it.pokApiFields)) {
+                                pokemon = createPokemonFromField(it.pokApiFields)
+                                pokemonDAO.insertPokemon(pokemon)
+                                pokedex.addPokemonToPokedex(pokemon)
+                            }
                         }
                         success = true
                         Toast.makeText(
@@ -117,7 +131,6 @@ class PokApiMainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-
                 override fun onFailure(call: Call<PokApiMainResponse>, t: Throwable) {
                     Toast.makeText(this@PokApiMainActivity, "Request failed", Toast.LENGTH_SHORT)
                         .show()
@@ -145,7 +158,6 @@ class PokApiMainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-
                 override fun onFailure(call: Call<PokApiMainResponse>, t: Throwable) {
                     Toast.makeText(this@PokApiMainActivity, "Request failed", Toast.LENGTH_SHORT)
                         .show()
@@ -173,7 +185,6 @@ class PokApiMainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-
                 override fun onFailure(call: Call<PokApiMainResponse>, t: Throwable) {
                     Toast.makeText(this@PokApiMainActivity, "Request failed", Toast.LENGTH_SHORT)
                         .show()
@@ -190,5 +201,9 @@ class PokApiMainActivity : AppCompatActivity() {
             pokApiFields.geopoint[0],
             pokApiFields.geopoint[1]
         )
+    }
+
+    private fun noNullDataInPokemon(pokApiFields: PokApiFields) : Boolean {
+        return (pokApiFields.pokemon != null) && (pokApiFields.lieu != null) && (pokApiFields.geolocalisation != null) && (pokApiFields.geopoint != null)
     }
 }

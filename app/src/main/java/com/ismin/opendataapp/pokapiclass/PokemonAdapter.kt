@@ -37,7 +37,7 @@ class PokemonAdapter(
         return this.pokedex.getNumberOfPokemons()
     }
 
-    fun updatePokemons(pokemons: ArrayList<Pokemon>){
+    fun updatePokemons(pokemons: ArrayList<Pokemon>) {
         pokedex.setPokemons(pokemons)
         notifyDataSetChanged()
     }
