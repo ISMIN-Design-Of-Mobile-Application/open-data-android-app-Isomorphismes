@@ -7,15 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".pokapifragments.PokApiInformationFragment">
 
-
     <TextView
         android:id="@+id/authors"
         android:layout_width="80dp"
         android:layout_height="21dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="Authors"
+        android:text="@string/authors"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,21 +24,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="Description"
+        android:text="@string/description"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/authors_text" />
 
     <TextView
-        android:id="@+id/external_librairies"
+        android:id="@+id/external_libraries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="External librairies"
+        android:text="@string/external_libraries"
         android:textAlignment="textEnd"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,12 +48,12 @@
         android:id="@+id/data_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="Data URL "
+        android:text="@string/data_url"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/external_librairies_text" />
+        app:layout_constraintTop_toBottomOf="@+id/external_libraries_text" />
 
     <TextView
         android:id="@+id/authors_text"
@@ -63,36 +62,36 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="Application made with love by: \n\n* Constant Bounoure\n* Tuan-Anh Bach"
+        android:text="@string/application_made_with_love"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/authors" />
 
     <TextView
         android:id="@+id/description_text"
-        android:layout_width="344dp"
-        android:layout_height="100dp"
+        android:layout_width="343dp"
+        android:layout_height="86dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="Android app where one users can navigate on a world map and see each available Pokemon's location, or go through his/her Pokedex and select a desired Pokemon in order to have more information about it."
+        android:text="@string/android_app_description"
         android:textAlignment="textStart"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
-        android:id="@+id/external_librairies_text"
-        android:layout_width="164dp"
-        android:layout_height="112dp"
+        android:id="@+id/external_libraries_text"
+        android:layout_width="170dp"
+        android:layout_height="91dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="This app uses the following external librairies:\n* Retrofit 2\n* Room"
+        android:text="@string/external_libraries_description"
         android:textAlignment="textStart"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/external_librairies" />
+        app:layout_constraintTop_toBottomOf="@+id/external_libraries" />
 
     <TextView
         android:id="@+id/data_url_text"
@@ -100,7 +99,7 @@
         android:layout_height="42dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="https://data.opendatasoft.com/explore/dataset/pokedex_clean%40public/"
+        android:text="@string/data_opendatasoft"
         android:textAlignment="textEnd"
         android:textSize="14sp"
         android:textStyle="italic"
@@ -109,10 +108,9 @@
 
     <ImageView
         android:id="@+id/ronflex"
-        android:layout_width="168dp"
-        android:layout_height="176dp"
+        android:layout_width="152dp"
+        android:layout_height="162dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
         android:src="@drawable/ronflex"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_text" />
@@ -121,7 +119,7 @@
         android:id="@+id/pikachu"
         android:layout_width="177dp"
         android:layout_height="176dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="36dp"
         android:src="@drawable/pikachu"
         app:layout_constraintEnd_toEndOf="parent"

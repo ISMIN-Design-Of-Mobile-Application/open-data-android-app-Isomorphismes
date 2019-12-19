@@ -36,6 +36,8 @@ class PokedexListOfPokemonsFragment : Fragment() {
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
 
+        println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
+        println(pokedex.getNumberOfPokemons())
         // Inflate the layout for this fragment
         return rootView
     }

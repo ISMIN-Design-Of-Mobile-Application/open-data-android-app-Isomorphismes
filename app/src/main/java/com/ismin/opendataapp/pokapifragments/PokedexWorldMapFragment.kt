@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -17,6 +18,7 @@ import com.ismin.opendataapp.interfaces.PokemonDAO
 import com.ismin.opendataapp.pokapiclass.Pokemon
 import com.ismin.opendataapp.ressources.PokApiDatabase
 import com.google.maps.android.clustering.ClusterManager
+import com.google.maps.android.clustering.view.DefaultClusterRenderer
 import com.ismin.opendataapp.pokapiclass.PokemonItem
 
 class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback,
@@ -59,25 +61,40 @@ class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback,
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
+        println("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
         mMap = googleMap
         mMap.setOnInfoWindowClickListener { this.requireContext() }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(47.778970, 7.347283)))
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(6.0f))
-        setUpClusterer()
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(7.0f))
+        setUpCluster()
     }
 
-    private fun setUpClusterer() {
-        mClusterManager = ClusterManager(this.requireContext(), mMap)
+    private fun setUpCluster() {
+        println("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
+        mClusterManager = ClusterManager(activity, mMap)
+        val markerClusterRenderer = DefaultClusterRenderer<PokemonItem>(activity, mMap, mClusterManager)
+        mClusterManager.renderer = markerClusterRenderer
+        mMap.setInfoWindowAdapter(mClusterManager.markerManager)
         mMap.setOnCameraIdleListener(mClusterManager)
         mMap.setOnMarkerClickListener(mClusterManager)
         addPokemonsToMap()
     }
 
     private fun addPokemonsToMap() {
+        println("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+        println(pokemons.size)
+        mClusterManager.clearItems()
         pokemons.forEach {
+            println(it)
             val pokemonItem = PokemonItem(it.lat, it.long, it.pokemon, it.lieu)
             mClusterManager.addItem(pokemonItem)
         }
+        mClusterManager.cluster()
+    }
+
+    fun updatePokemons() {
+        pokemons = pokemonDAO.getAllLocalPokemons()
+        addPokemonsToMap()
     }
 
     override fun onAttach(context: Context) {
@@ -85,7 +102,7 @@ class PokedexWorldMapFragment : Fragment(), OnMapReadyCallback,
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
     }
 

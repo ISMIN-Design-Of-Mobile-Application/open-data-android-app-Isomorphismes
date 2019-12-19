@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.ismin.opendataapp.R
 import com.ismin.opendataapp.interfaces.PokemonDAO
@@ -47,7 +48,9 @@ class PokApiMainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokapi_main)
         pokemonDAO = PokApiDatabase.getAppDatabase(this).getPokemonDao()
+        getAllPokemonsFromAPI()
 
+        val viewPager: ViewPager = findViewById(R.id.viewPager)
         fragmentAdapter = PagerAdapter(supportFragmentManager)
         fragmentAdapter.addFragments()
         viewPager.adapter = fragmentAdapter
@@ -66,7 +69,6 @@ class PokApiMainActivity : AppCompatActivity(),
 
             }
         })
-        getAllPokemonsFromAPI()
     }
 
     // Menu, si besoin
@@ -108,9 +110,9 @@ class PokApiMainActivity : AppCompatActivity(),
                 ) {
                     val allPokemon = response.body()
                     if (allPokemon != null) {
+                        println("OOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
                         val pokapirecords = allPokemon?.records
                         pokapirecords!!.forEach {
-                            println(it.pokApiFields)
                             if(noNullDataInPokemon(it.pokApiFields)) {
                                 pokemon = createPokemonFromField(it.pokApiFields)
                                 pokemonDAO.insertPokemon(pokemon)

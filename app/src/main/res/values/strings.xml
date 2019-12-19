@@ -5,5 +5,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_pokedex_world_map">Pokemons World Map</string>
     <string name="information_fragment">information_fragment</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">PokApi</string>
+    <string name="authors">Authors</string>
+    <string name="description">Description</string>
+    <string name="external_libraries">External librairies</string>
+    <string name="data_url">Data URL</string>
+    <string name="application_made_with_love">Application made with love by:\n\t* Constant Bounoure\n\t* Tuan-Anh Bach</string>
+    <string name="android_app_description">Android app where one users can navigate on a world map and see each available Pokemon\'s location, or go through his/her Pokedex and select a desired Pokemon in order to have more information about it.</string>
+    <string name="external_libraries_description">This app uses the following external librairies:\n\t* Retrofit 2\n\t* Room</string>
+    <string name="data_opendatasoft">https://data.opendatasoft.com/explore/dataset/pokedex_clean%40public/</string>
+    <string name="welcome_fellow_pokemon_trainer">Welcome, fellow pokemon trainer!</string>
 </resources>
