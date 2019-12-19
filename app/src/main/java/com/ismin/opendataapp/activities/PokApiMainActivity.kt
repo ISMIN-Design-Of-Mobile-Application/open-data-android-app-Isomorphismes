@@ -1,6 +1,9 @@
 package com.ismin.opendataapp.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayout
@@ -12,6 +15,7 @@ import com.ismin.opendataapp.jsonparsingclass.PokApiMainResponse
 import com.ismin.opendataapp.pokapiclass.PagerAdapter
 import com.ismin.opendataapp.pokapiclass.Pokedex
 import com.ismin.opendataapp.pokapiclass.Pokemon
+import com.ismin.opendataapp.pokapifragments.PokedexListOfPokemonsFragment
 import com.ismin.opendataapp.ressources.PokApiDatabase
 import com.ismin.opendataapp.ressources.SERVER_BASE_URL
 import kotlinx.android.synthetic.main.activity_pokapi_main.*
@@ -31,13 +35,14 @@ class PokApiMainActivity : AppCompatActivity() {
     private var pokemonService = retrofit.create<PokemonService>(PokemonService::class.java)
 
     private lateinit var pokemonDAO: PokemonDAO
+    private lateinit var fragmentAdapter: PagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokapi_main)
         pokemonDAO = PokApiDatabase.getAppDatabase(this).getPokemonDao()
 
-        val fragmentAdapter = PagerAdapter(supportFragmentManager)
+        fragmentAdapter = PagerAdapter(supportFragmentManager)
         fragmentAdapter.addFragments()
         viewPager.adapter = fragmentAdapter
         tabLayout.setupWithViewPager(viewPager)
@@ -57,6 +62,29 @@ class PokApiMainActivity : AppCompatActivity() {
         })
         getAllPokemonsFromAPI()
     }
+
+    // Menu, si besoin
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.updtate_pokemons -> {
+                getAllPokemonsFromAPI()
+                (fragmentAdapter.getItem(0) as PokedexListOfPokemonsFragment).updatePokemons()
+                true
+            }
+            // If we got here, the user's action was not recognized.
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onPokemonClicked(pokemon: Pokemon) {
+        //Fonction pour lancer l'activity d'information
+    }*/
 
     private fun getAllPokemonsFromAPI(): Boolean {
         var success = false
@@ -156,7 +184,6 @@ class PokApiMainActivity : AppCompatActivity() {
 
     private fun createPokemonFromField(pokApiFields: PokApiFields): Pokemon {
         return Pokemon(
-            0,
             pokApiFields.pokemon,
             pokApiFields.lieu,
             pokApiFields.geolocalisation,

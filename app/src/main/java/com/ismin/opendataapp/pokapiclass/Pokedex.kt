@@ -12,7 +12,6 @@ class Pokedex {
     }
 
     fun addPokemonToPokedex(
-        image: Int,
         name: String,
         geolocalisation: String,
         long: Double,
@@ -21,12 +20,11 @@ class Pokedex {
     ) {
         pokemons.add(
             Pokemon(
-                image,
                 name,
+                lieu,
                 geolocalisation,
                 long,
-                lat,
-                lieu
+                lat
             )
         )
     }
@@ -47,12 +45,11 @@ class Pokedex {
             }
         }
         return Pokemon(
-            0,
+            "not found",
             "not found",
             "not found",
             0.0,
-            0.0,
-            "not found"
+            0.0
         )
     }
 
@@ -66,5 +63,9 @@ class Pokedex {
 
     fun getPokemons(): ArrayList<Pokemon> {
         return this.pokemons
+    }
+
+    fun setPokemons(pokemons: ArrayList<Pokemon>) {
+        this.pokemons = pokemons
     }
 }

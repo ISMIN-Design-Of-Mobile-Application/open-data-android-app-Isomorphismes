@@ -7,7 +7,6 @@ import java.io.Serializable
 
 @Entity
 data class Pokemon(
-    val image: Int = 0,
     @PrimaryKey(autoGenerate = false)
     var pokemon: String = "",
     var lieu: String = "",
