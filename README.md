@@ -8,10 +8,14 @@ Application codée avec amour par :
 ## Description  
 
 URL des données : https://data.opendatasoft.com/explore/dataset/pokedex_clean%40public/table/ 
+URL Serveur PokApi: https://pokapi.now.sh/
+Code source serveur: https://github.com/Trukibouge/PokApi
   
-Réalisation d'un pokédex sur Androïd. L'application permettra de parcourir la liste des pokémons du pokédex, d'obtenir des informations sur les pokémons en cliquant dessus, d'aller sur la mapmonde et de chercher les pokémons via leur position. 
+Réalisation d'un pokédex sur Android. L'application permettra de parcourir la liste des pokémons du pokédex, d'obtenir des informations sur les pokémons en cliquant dessus, d'aller sur la mapmonde et de chercher les pokémons via leur position. 
 
-A l'avenir (possiblement après la date de rendue),on pourra également tenir un inventaire pour le dresseur, et capturer des pokémons et entretenir leur bien-être.
+La base Open Data contient les informations liées à la localisaton des Pokemons. Un serveur supplémentaire est maintenu afin de fournir des informations sur leurs performances de combat et gérer les inventaires des dresseurs (fonctionalité toujours en alpha-test sur la version Test de l'application client). 
+
+A l'avenir (possiblement après la date de rendue), on pourra également tenir un inventaire pour le dresseur, et capturer des pokémons et entretenir leur bien-être.
   
 ## Librairies externes  
   
