@@ -72,7 +72,7 @@ class PokemonInformationActivity : AppCompatActivity() {
 
             val yAxis = radarChart.yAxis
             yAxis.axisMinimum = 0f
-            yAxis.axisMaximum = 100f
+            yAxis.axisMaximum = 130f
             yAxis.setDrawLabels(false)
 
             radarChart.legend.isEnabled = false
@@ -150,6 +150,7 @@ class PokemonInformationActivity : AppCompatActivity() {
 
         radarChart.notifyDataSetChanged()
         radarChart.data = radarData
+        radarChart.invalidate()
     }
 
 }
