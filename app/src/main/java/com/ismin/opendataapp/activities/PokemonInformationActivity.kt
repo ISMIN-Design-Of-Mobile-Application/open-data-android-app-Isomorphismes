@@ -2,12 +2,15 @@ package com.ismin.opendataapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.ismin.opendataapp.R
 import com.ismin.opendataapp.interfaces.PokApiPokemonService
 import com.ismin.opendataapp.pokapiclass.PokApiPokemon
 import com.ismin.opendataapp.ressources.POKAPI_URL
+import com.ismin.opendataapp.ressources.POKIMAGE_ROOT
 import kotlinx.android.synthetic.main.activity_pokemon_information.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,6 +34,7 @@ class PokemonInformationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_information)
 
+        val pokemonImage = findViewById<ImageView>(R.id.pokemonImage)
         val pokemonId = findViewById<TextView>(R.id.pokemonId)
         val pokemonName = findViewById<TextView>(R.id.pokemonName)
         val atkValue = findViewById<TextView>(R.id.atkValue)
@@ -50,6 +54,7 @@ class PokemonInformationActivity : AppCompatActivity() {
                     if (response.body() != null){
                         pokemonStats = response.body()!!
                         fillInfo(pokemonStats)
+                        fetchPicture(pokemonStats)
                     }
                     else{
                         Toast.makeText(baseContext,"Can't find pokemon: $pokeName", Toast.LENGTH_LONG).show()
@@ -72,8 +77,9 @@ class PokemonInformationActivity : AppCompatActivity() {
         speedValue.text = pokemonInformation.base.Speed.toString()
     }
 
-    private fun fetchPicture(){
-
+    private fun fetchPicture(pokemonInformation: PokApiPokemon){
+        val pokemonPicUrl = POKIMAGE_ROOT + pokemonInformation.id.toString() + ".png"
+        Glide.with(this).load(pokemonPicUrl).into(pokemonImage)
     }
 
 }
