@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ismin.opendataapp.R
-import com.ismin.opendataapp.pokapifragments.PokedexListOfPokemonsFragment
+import com.ismin.opendataapp.pokapifragments.PokAppliListOfPokemonsFragment
 
 class PokemonAdapter(
-    private val pokedex: Pokedex,
-    private val fragmentInteractionListener: PokedexListOfPokemonsFragment.OnFragmentInteractionListener?,
-    private val context: Context?
+    private var pokedex: Pokedex,
+    private var fragmentInteractionListener: PokAppliListOfPokemonsFragment.OnFragmentInteractionListener?,
+    context: Context?
 ) :
     RecyclerView.Adapter<PokemonViewHolder>() {
 
@@ -27,6 +27,7 @@ class PokemonAdapter(
 
         viewholder.txvName.text = pokemon.pokemon
         viewholder.txvLieu.text = pokemon.lieu
+        viewholder.imvImage.setImageResource(R.drawable.pokeball_icon)
         viewholder.itemView.setOnClickListener {
             fragmentInteractionListener?.onPokemonClicked(pokemon)
         }
