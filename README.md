@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Trukibouge/pokemon.json/master/Capture.PNG" width="320" alt="Nest Logo" /></a>
+</p>
+
 
 ## PokAppli
   
@@ -53,4 +57,3 @@ Lien vers le sujet : https://docs.google.com/presentation/d/1mwu2xx7_qfCZDfsRxse
  - Enrichissements techniques :
     - Mise en place d’une base de données locale pour afficher la liste d’élément en mode hors connexion
     - Utilisation de LiveData ou d’Observable pour la récupération de données dans la BDD
- 
