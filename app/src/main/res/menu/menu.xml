@@ -2,21 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- Delete bottles -->
     <item
-        android:id="@+id/action_deleteAll"
-        android:title="Vider la cave"
+        android:id="@+id/action_refresh"
+        android:title="Refresh"
         app:showAsAction="never" />
 
-    <!-- "Mark Favorite", should appear as action button if possible -->
-    <item
-        android:id="@+id/action_favorite"
-        android:title="Favoris"
-        app:showAsAction="never" />
-
-    <!-- Settings, should always be in the overflow -->
-    <item
-        android:id="@+id/action_settings"
-        android:title="Settings"
-        app:showAsAction="never" />
 </menu>

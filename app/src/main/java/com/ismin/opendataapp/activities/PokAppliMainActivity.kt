@@ -3,6 +3,8 @@ package com.ismin.opendataapp.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
@@ -79,8 +81,7 @@ class PokAppliMainActivity : AppCompatActivity(),
         })
     }
 
-    // Menu, si besoin
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -88,25 +89,19 @@ class PokAppliMainActivity : AppCompatActivity(),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.updtate_pokemons -> {
-                getAllPokemonsFromAPI()
-                (fragmentAdapter.getItem(0) as PokAppliListOfPokemonsFragment).updatePokemons()
+            R.id.action_refresh -> {
+                //Todo: refresh function
+                Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show()
                 true
             }
-            // If we got here, the user's action was not recognized.
-            else -> super.onOptionsItemSelected(item)
+
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
-     */
 
     override fun onPokemonClicked(pokemon: Pokemon) {
-        //Fonction pour lancer l'activity d'information
-//        Toast.makeText(
-//            this@PokAppliMainActivity,
-//            "Pokemon clicked! Name is: " + pokemon.pokemon,
-//            Toast.LENGTH_SHORT
-//        ).show()
-
         val intent = Intent(this, PokemonInformationActivity::class.java)
         intent.putExtra(Intent.EXTRA_TEXT, pokemon.pokemon)
         this.startActivity(intent)
