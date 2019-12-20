@@ -90,8 +90,9 @@ class PokAppliMainActivity : AppCompatActivity(),
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_refresh -> {
-                //Todo: refresh function
-                Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show()
+                //Todo: check if right function is used
+                getAllPokemonsFromAPI()
+                Toast.makeText(this, "Data refreshed", Toast.LENGTH_SHORT).show()
                 true
             }
 
