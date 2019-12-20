@@ -40,9 +40,6 @@ class PokemonAdapter(
 
     fun updatePokemons(pokemons: ArrayList<Pokemon>) {
         pokedex.setPokemons(pokemons)
-        println("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL")
-        println(pokedex.getNumberOfPokemons())
-        println(pokedex.getPokemonFromPokedex(0))
         notifyDataSetChanged()
     }
 }
