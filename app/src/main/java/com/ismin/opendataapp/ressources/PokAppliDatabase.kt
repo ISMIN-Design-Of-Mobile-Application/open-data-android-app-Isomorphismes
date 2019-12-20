@@ -7,21 +7,21 @@ import androidx.room.RoomDatabase
 import com.ismin.opendataapp.interfaces.PokemonDAO
 import com.ismin.opendataapp.pokapiclass.Pokemon
 
-@Database(entities = [Pokemon::class], version = 1)
-abstract class PokApiDatabase : RoomDatabase() {
+@Database(entities = [Pokemon::class], version = 3)
+abstract class PokAppliDatabase : RoomDatabase() {
 
     abstract fun getPokemonDao(): PokemonDAO
 
     companion object {
-        private var INSTANCE: PokApiDatabase? = null
+        private var INSTANCE: PokAppliDatabase? = null
 
-        fun getAppDatabase(context: Context): PokApiDatabase {
+        fun getAppDatabase(context: Context): PokAppliDatabase {
             if (INSTANCE == null) {
-                synchronized(PokApiDatabase::class) {
+                synchronized(PokAppliDatabase::class) {
                     INSTANCE = Room
                         .databaseBuilder(
                             context.applicationContext,
-                            PokApiDatabase::class.java,
+                            PokAppliDatabase::class.java,
                             "pokemonsDB"
                         )
                         .allowMainThreadQueries()
@@ -29,7 +29,7 @@ abstract class PokApiDatabase : RoomDatabase() {
                         .build()
                 }
             }
-            return INSTANCE as PokApiDatabase
+            return INSTANCE as PokAppliDatabase
         }
     }
 }

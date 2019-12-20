@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ismin.opendataapp.R
-import com.ismin.opendataapp.pokapifragments.PokedexListOfPokemonsFragment
+import com.ismin.opendataapp.pokapifragments.PokAppliListOfPokemonsFragment
 
 class PokemonAdapter(
     private val pokedex: Pokedex,
-    private val fragmentInteractionListener: PokedexListOfPokemonsFragment.OnFragmentInteractionListener?,
+    private val fragmentInteractionListener: PokAppliListOfPokemonsFragment.OnFragmentInteractionListener?,
     private val context: Context?
 ) :
     RecyclerView.Adapter<PokemonViewHolder>() {
