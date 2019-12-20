@@ -26,8 +26,9 @@ A l'avenir (possiblement après la date de rendue), on pourra également tenir u
 ## Librairies externes  
   
 - Room
-- Retrofrit 2
+- Retrofit 2
 - MPAndroidChart 3.1.0
+- Glide 4.2.0
   
 ## Consignes  
   
