@@ -1,5 +1,5 @@
 
-## PokApi
+## PokAppli
   
 Application codée avec amour par :   
  - Constant Bounoure   
