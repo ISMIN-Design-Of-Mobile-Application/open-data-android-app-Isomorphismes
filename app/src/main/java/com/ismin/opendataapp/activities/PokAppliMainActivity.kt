@@ -100,6 +100,11 @@ class PokAppliMainActivity : AppCompatActivity(),
 
     override fun onPokemonClicked(pokemon: Pokemon) {
         //Fonction pour lancer l'activity d'information
+        Toast.makeText(
+            this@PokAppliMainActivity,
+            "Pokemon clicked! Name is: " + pokemon.pokemon,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onFragmentInteraction(uri: Uri) {
