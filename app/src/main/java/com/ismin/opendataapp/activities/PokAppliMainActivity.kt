@@ -1,5 +1,6 @@
 package com.ismin.opendataapp.activities
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -100,11 +101,15 @@ class PokAppliMainActivity : AppCompatActivity(),
 
     override fun onPokemonClicked(pokemon: Pokemon) {
         //Fonction pour lancer l'activity d'information
-        Toast.makeText(
-            this@PokAppliMainActivity,
-            "Pokemon clicked! Name is: " + pokemon.pokemon,
-            Toast.LENGTH_SHORT
-        ).show()
+//        Toast.makeText(
+//            this@PokAppliMainActivity,
+//            "Pokemon clicked! Name is: " + pokemon.pokemon,
+//            Toast.LENGTH_SHORT
+//        ).show()
+
+        val intent = Intent(this, PokemonInformationActivity::class.java)
+        intent.putExtra(Intent.EXTRA_TEXT, pokemon.pokemon)
+        this.startActivity(intent)
     }
 
     override fun onFragmentInteraction(uri: Uri) {

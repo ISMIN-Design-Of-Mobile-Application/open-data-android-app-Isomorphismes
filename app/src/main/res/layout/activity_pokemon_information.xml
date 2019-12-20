@@ -18,6 +18,17 @@
         app:layout_constraintTop_toTopOf="@+id/speedLabel" />
 
     <TextView
+        android:id="@+id/typeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/typeLabel"
+        app:layout_constraintStart_toStartOf="@+id/typeLabel"
+        app:layout_constraintTop_toTopOf="@+id/typeLabel" />
+
+    <TextView
         android:id="@+id/pokemonId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +43,7 @@
         android:id="@+id/atklabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Attack:"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -55,13 +66,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemonImage"
-        app:layout_constraintVertical_bias="0.329" />
+        app:layout_constraintVertical_bias="0.238" />
 
     <TextView
         android:id="@+id/deflabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Defense:"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -70,13 +81,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/atklabel"
         app:layout_constraintTop_toBottomOf="@+id/atklabel"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/spDefLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Sp. Def:"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -87,7 +98,7 @@
         android:id="@+id/spAtkLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Sp. Atk:"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -98,17 +109,28 @@
         android:id="@+id/speedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Speed:"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/spDefLabel"
         app:layout_constraintTop_toBottomOf="@+id/spDefLabel" />
 
+    <TextView
+        android:id="@+id/typeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Type:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/spDefLabel"
+        app:layout_constraintTop_toBottomOf="@+id/speedLabel" />
+
     <ImageView
         android:id="@+id/pokemonImage"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
