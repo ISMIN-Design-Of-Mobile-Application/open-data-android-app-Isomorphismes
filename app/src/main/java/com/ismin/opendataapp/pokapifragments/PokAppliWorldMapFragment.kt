@@ -78,12 +78,14 @@ class PokAppliWorldMapFragment : Fragment(), OnMapReadyCallback,
     }
 
     private fun addPokemonsToMap() {
-        mClusterManager.clearItems()
-        pokemons.forEach {
-            val pokemonItem = PokemonItem(it.lat, it.lng, it.pokemon, it.lieu)
-            mClusterManager.addItem(pokemonItem)
+        if(::mClusterManager.isInitialized){
+            mClusterManager.clearItems()
+            pokemons.forEach {
+                val pokemonItem = PokemonItem(it.lat, it.lng, it.pokemon, it.lieu)
+                mClusterManager.addItem(pokemonItem)
+            }
+            mClusterManager.cluster()
         }
-        mClusterManager.cluster()
     }
 
     fun updatePokemons() {
