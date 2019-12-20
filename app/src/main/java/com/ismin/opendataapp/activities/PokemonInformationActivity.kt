@@ -8,6 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.github.mikephil.charting.charts.RadarChart
+import com.github.mikephil.charting.data.RadarData
+import com.github.mikephil.charting.data.RadarDataSet
+import com.github.mikephil.charting.data.RadarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.ismin.opendataapp.R
 import com.ismin.opendataapp.interfaces.PokApiPokemonService
 import com.ismin.opendataapp.pokapiclass.PokApiPokemon
@@ -50,9 +55,31 @@ class PokemonInformationActivity : AppCompatActivity() {
             val spDefValue = findViewById<TextView>(R.id.spDefValue)
             val speedValue = findViewById<TextView>(R.id.speedValue)
 
-//            Glide.with(this).load("${POKIMAGE_ROOT}001.png").into(pokemonImage)
+
+            radarChart.refreshDrawableState();
+            val xLabels = ArrayList<String>()
+            xLabels.clear()
+
+            xLabels.add("HP")
+            xLabels.add("ATK")
+            xLabels.add("DEF")
+            xLabels.add("SPATK")
+            xLabels.add("SPDEF")
+            xLabels.add("SPD")
+
+            val xAxis = radarChart.xAxis
+            xAxis.valueFormatter = IndexAxisValueFormatter(xLabels)
+
+            val yAxis = radarChart.yAxis
+            yAxis.axisMinimum = 0f
+            yAxis.axisMaximum = 130f
+            yAxis.setDrawLabels(false)
+
+            radarChart.legend.isEnabled = false
+            radarChart.description.isEnabled = false
 
             getPokemonInformationRequest(data)
+
 
         } else{
             setResult(Activity.RESULT_CANCELED, returnIntent)
@@ -73,6 +100,8 @@ class PokemonInformationActivity : AppCompatActivity() {
                         pokemonStats = response.body()!!
                         fillInfo(pokemonStats)
                         fetchPicture(pokemonStats)
+                        getChartData(pokemonStats)
+
                     } else{
                         Toast.makeText(baseContext,"Can't find pokemon: $pokeName", Toast.LENGTH_LONG).show()
                     }
@@ -103,6 +132,25 @@ class PokemonInformationActivity : AppCompatActivity() {
         }
         val pokemonPicUrl = "${POKIMAGE_ROOT}${formattedId}.png"
         Glide.with(this).load(pokemonPicUrl).into(pokemonImage)
+    }
+
+    private fun getChartData(pokemonInformation: PokApiPokemon){
+        val radarEntries = ArrayList<RadarEntry>()
+        radarEntries.clear()
+        radarEntries.add(RadarEntry(pokemonInformation.base.HP.toFloat(), 0))
+        radarEntries.add(RadarEntry(pokemonInformation.base.Attack.toFloat(), 1))
+        radarEntries.add(RadarEntry(pokemonInformation.base.Defense.toFloat(), 2))
+        radarEntries.add(RadarEntry(pokemonInformation.base.SpAttack.toFloat(), 3))
+        radarEntries.add(RadarEntry(pokemonInformation.base.SpDefense.toFloat(), 4))
+        radarEntries.add(RadarEntry(pokemonInformation.base.Speed.toFloat(), 5))
+
+        val radarDataSet = RadarDataSet(radarEntries, "")
+        val radarData = RadarData(radarDataSet)
+
+
+        radarChart.notifyDataSetChanged()
+        radarChart.data = radarData
+        radarChart.invalidate()
     }
 
 }
