@@ -4,10 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.SparseIntArray
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.github.mikephil.charting.charts.RadarChart
+import com.github.mikephil.charting.data.RadarData
+import com.github.mikephil.charting.data.RadarDataSet
+import com.github.mikephil.charting.data.RadarEntry
 import com.ismin.opendataapp.R
 import com.ismin.opendataapp.interfaces.PokApiPokemonService
 import com.ismin.opendataapp.pokapiclass.PokApiPokemon
@@ -50,9 +55,8 @@ class PokemonInformationActivity : AppCompatActivity() {
             val spDefValue = findViewById<TextView>(R.id.spDefValue)
             val speedValue = findViewById<TextView>(R.id.speedValue)
 
-//            Glide.with(this).load("${POKIMAGE_ROOT}001.png").into(pokemonImage)
-
             getPokemonInformationRequest(data)
+
 
         } else{
             setResult(Activity.RESULT_CANCELED, returnIntent)
@@ -73,6 +77,8 @@ class PokemonInformationActivity : AppCompatActivity() {
                         pokemonStats = response.body()!!
                         fillInfo(pokemonStats)
                         fetchPicture(pokemonStats)
+                        getChartData(pokemonStats)
+
                     } else{
                         Toast.makeText(baseContext,"Can't find pokemon: $pokeName", Toast.LENGTH_LONG).show()
                     }
@@ -103,6 +109,26 @@ class PokemonInformationActivity : AppCompatActivity() {
         }
         val pokemonPicUrl = "${POKIMAGE_ROOT}${formattedId}.png"
         Glide.with(this).load(pokemonPicUrl).into(pokemonImage)
+    }
+
+    private fun getChartData(pokemonInformation: PokApiPokemon){
+        val radarEntries = ArrayList<RadarEntry>()
+        radarEntries.clear()
+
+        radarEntries.add(RadarEntry(0f, 10f))
+        radarEntries.add(RadarEntry(1f, 10f))
+        radarEntries.add(RadarEntry(2f, 10f))
+        radarEntries.add(RadarEntry(3f, 10f))
+        radarEntries.add(RadarEntry(4f, 10f))
+        radarEntries.add(RadarEntry(5f, 10f))
+
+        val radarDataSet = RadarDataSet(radarEntries, "")
+        val radarData = RadarData(radarDataSet)
+
+        radarChart.legend.isEnabled = false
+        radarChart.description.isEnabled = false
+
+        radarChart.data = radarData
     }
 
 }
