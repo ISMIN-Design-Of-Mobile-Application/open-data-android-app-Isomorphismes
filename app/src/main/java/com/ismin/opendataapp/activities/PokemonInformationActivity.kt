@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.SparseIntArray
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +12,7 @@ import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.ismin.opendataapp.R
 import com.ismin.opendataapp.interfaces.PokApiPokemonService
 import com.ismin.opendataapp.pokapiclass.PokApiPokemon
@@ -54,6 +54,29 @@ class PokemonInformationActivity : AppCompatActivity() {
             val spAtkValue = findViewById<TextView>(R.id.spAtkValue)
             val spDefValue = findViewById<TextView>(R.id.spDefValue)
             val speedValue = findViewById<TextView>(R.id.speedValue)
+
+
+            radarChart.refreshDrawableState();
+            val xLabels = ArrayList<String>()
+            xLabels.clear()
+
+            xLabels.add("HP")
+            xLabels.add("ATK")
+            xLabels.add("DEF")
+            xLabels.add("SPATK")
+            xLabels.add("SPDEF")
+            xLabels.add("SPD")
+
+            val xAxis = radarChart.xAxis
+            xAxis.valueFormatter = IndexAxisValueFormatter(xLabels)
+
+            val yAxis = radarChart.yAxis
+            yAxis.axisMinimum = 0f
+            yAxis.axisMaximum = 100f
+            yAxis.setDrawLabels(false)
+
+            radarChart.legend.isEnabled = false
+            radarChart.description.isEnabled = false
 
             getPokemonInformationRequest(data)
 
@@ -114,20 +137,18 @@ class PokemonInformationActivity : AppCompatActivity() {
     private fun getChartData(pokemonInformation: PokApiPokemon){
         val radarEntries = ArrayList<RadarEntry>()
         radarEntries.clear()
-
-        radarEntries.add(RadarEntry(0f, 10f))
-        radarEntries.add(RadarEntry(1f, 10f))
-        radarEntries.add(RadarEntry(2f, 10f))
-        radarEntries.add(RadarEntry(3f, 10f))
-        radarEntries.add(RadarEntry(4f, 10f))
-        radarEntries.add(RadarEntry(5f, 10f))
+        radarEntries.add(RadarEntry(pokemonInformation.base.HP.toFloat(), 0))
+        radarEntries.add(RadarEntry(pokemonInformation.base.Attack.toFloat(), 1))
+        radarEntries.add(RadarEntry(pokemonInformation.base.Defense.toFloat(), 2))
+        radarEntries.add(RadarEntry(pokemonInformation.base.SpAttack.toFloat(), 3))
+        radarEntries.add(RadarEntry(pokemonInformation.base.SpDefense.toFloat(), 4))
+        radarEntries.add(RadarEntry(pokemonInformation.base.Speed.toFloat(), 5))
 
         val radarDataSet = RadarDataSet(radarEntries, "")
         val radarData = RadarData(radarDataSet)
 
-        radarChart.legend.isEnabled = false
-        radarChart.description.isEnabled = false
 
+        radarChart.notifyDataSetChanged()
         radarChart.data = radarData
     }
 
