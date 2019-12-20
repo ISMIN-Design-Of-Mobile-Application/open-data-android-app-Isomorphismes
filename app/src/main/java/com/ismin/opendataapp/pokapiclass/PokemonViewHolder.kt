@@ -16,5 +16,6 @@ class PokemonViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
         this.txvName = rootView.findViewById(R.id.pokemon_name)
         this.txvLieu = rootView.findViewById(R.id.pokemon_lieu)
         this.imvImage = rootView.findViewById(R.id.pokemon_image)
+
     }
 }

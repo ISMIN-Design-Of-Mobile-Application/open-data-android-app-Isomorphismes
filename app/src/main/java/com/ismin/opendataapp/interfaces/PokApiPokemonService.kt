@@ -14,6 +14,9 @@ public interface PokApiPokemonService {
     @POST("pokedexes/{id}/pokemons")
     fun addDiscoveredPokemon(@Path("pokedexId") pokedexId: String, @Body pokemon: PokApiPokemon): Call<PokApiPokemon>
 
-    @GET("information/:name")
-    fun getInformation(@Path("id") id: String, @Path("name") name: String): Call<PokApiPokemon>
+    @GET("pokemoninformation/:name")
+    fun getInformation(@Path("name") name: String): Call<PokApiPokemon>
+
+    @GET("pkemoninformation")
+    fun getAllInformation(): Call<List<PokApiPokemon>>
 }
