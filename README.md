@@ -17,6 +17,7 @@ A l'avenir (possiblement après la date de rendue),on pourra également tenir un
   
 - Room
 - Retrofrit 2
+- MPAndroidChart 3.1.0
   
 ## Consignes  
   
