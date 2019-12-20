@@ -1,11 +1,8 @@
 <resources>
-    <string name="app_name">PokApi</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">PokAppli</string>
     <string name="title_activity_pokedex_world_map">Pokemons World Map</string>
     <string name="information_fragment">information_fragment</string>
-    <string name="title_activity_main">PokApi</string>
+    <string name="title_activity_main">PokAppli</string>
     <string name="authors">Authors</string>
     <string name="description">Description</string>
     <string name="external_libraries">External librairies</string>
@@ -15,4 +12,6 @@
     <string name="external_libraries_description">This app uses the following external librairies:\n\t* Retrofit 2\n\t* Room</string>
     <string name="data_opendatasoft">https://data.opendatasoft.com/explore/dataset/pokedex_clean%40public/</string>
     <string name="welcome_fellow_pokemon_trainer">Welcome, fellow pokemon trainer!</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

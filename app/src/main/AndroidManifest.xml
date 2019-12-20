@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.PokemonInformationActivity"></activity>
         <activity
-            android:name=".activities.PokApiMainActivity"
+            android:name=".activities.PokAppliMainActivity"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

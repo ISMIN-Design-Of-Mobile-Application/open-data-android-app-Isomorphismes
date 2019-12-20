@@ -5,12 +5,12 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-@Entity
+@Entity(tableName = "pokemon")
 data class Pokemon(
     @PrimaryKey(autoGenerate = false)
     var pokemon: String = "",
     var lieu: String = "",
     var geolocalisation: String = "",
-    var long: Double = 0.0,
-    var lat: Double = 0.0
+    var lat: Double = 0.0,
+    var lng: Double = 0.0
 ) : Serializable

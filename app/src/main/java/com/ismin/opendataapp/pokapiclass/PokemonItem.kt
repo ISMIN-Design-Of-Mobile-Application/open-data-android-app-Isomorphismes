@@ -8,12 +8,8 @@ class PokemonItem : ClusterItem {
     private var title: String = ""
     private var snippet: String = ""
 
-    constructor(lat: Double, lng: Double) {
-        position = LatLng(lat, lng)
-    }
-
     constructor(lat: Double, lng: Double, title: String, snippet: String) {
-        position = LatLng(lat, lng)
+        this.position = LatLng(lat, lng)
         this.title = title
         this.snippet = snippet
     }

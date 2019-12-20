@@ -6,7 +6,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.ismin.opendataapp.R
 import com.ismin.opendataapp.interfaces.PokApiPokemonService
-import com.ismin.opendataapp.jsonparsingclass.PokApiMainResponse
 import com.ismin.opendataapp.pokapiclass.PokApiPokemon
 import com.ismin.opendataapp.ressources.POKAPI_URL
 import kotlinx.android.synthetic.main.activity_pokemon_information.*

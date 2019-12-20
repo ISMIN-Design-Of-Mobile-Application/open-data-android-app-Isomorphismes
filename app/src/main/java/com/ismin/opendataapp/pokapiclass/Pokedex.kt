@@ -67,5 +67,6 @@ class Pokedex {
 
     fun setPokemons(pokemons: ArrayList<Pokemon>) {
         this.pokemons = pokemons
+        this.nbPokemon = pokemons.size
     }
 }
