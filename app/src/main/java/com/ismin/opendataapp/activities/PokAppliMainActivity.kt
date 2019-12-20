@@ -30,7 +30,9 @@ class PokAppliMainActivity : AppCompatActivity(),
     PokAppliListOfPokemonsFragment.OnFragmentInteractionListener,
     PokAppliWorldMapFragment.OnFragmentInteractionListener,
     PokAppliInformationFragment.OnFragmentInteractionListener {
+
     private var pokedex: Pokedex = Pokedex()
+
     private var pokAppliWorldMapFragment: PokAppliWorldMapFragment = PokAppliWorldMapFragment()
     private var pokAppliInformationFragment: PokAppliInformationFragment =
         PokAppliInformationFragment()
@@ -95,6 +97,7 @@ class PokAppliMainActivity : AppCompatActivity(),
         }
     }
      */
+
     override fun onPokemonClicked(pokemon: Pokemon) {
         //Fonction pour lancer l'activity d'information
     }

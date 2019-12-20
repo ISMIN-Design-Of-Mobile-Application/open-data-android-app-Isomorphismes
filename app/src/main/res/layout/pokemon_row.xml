@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_marginHorizontal="20dp"
     android:layout_marginBottom="10dp"
     android:orientation="horizontal"
     tools:context=".pokapiclass.Pokemon">
@@ -15,13 +16,13 @@
         tools:src="@drawable/pokeball_icon" />
 
     <LinearLayout
-        android:layout_width="162dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/pokemon_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -31,7 +32,7 @@
 
         <TextView
             android:id="@+id/pokemon_lieu"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
